@@ -1,0 +1,42 @@
+---
+title: "About — CCES"
+---
+{% assign a = site.data.about %}
+{% assign h = site.data.home %}
+
+<main>
+  <!-- Page hero -->
+  <section class="section-dark">
+    <div class="container page-hero">
+      <div class="eyebrow eyebrow--light">{{ site.data.site.nav.about }}</div>
+      <h1 class="page-hero__title">{{ a.intro_title }}</h1>
+      <p class="page-hero__lead">{{ a.mission_lead }}</p>
+    </div>
+  </section>
+
+  <!-- Objectives (same as home) -->
+  <section class="section-padded--sm">
+    <div class="container">
+      <div class="eyebrow">{{ h.obj_intro }}</div>
+      <h2 class="section-title">{{ h.obj_heading }}</h2>
+      <div class="grid-3" style="margin-top:34px;">
+        {% for o in h.objectives %}
+        <div class="card">
+          <div class="card__tag">{{ o.tag }}</div>
+          <h3 class="card__title">{{ o.title }}</h3>
+          <p class="card__body">{{ o.body }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Governance -->
+  <section class="section-light">
+    <div class="container-text">
+      <div class="eyebrow">{{ a.gov_eyebrow }}</div>
+      <h2 class="section-title">{{ a.governance_title }}</h2>
+      <p style="font:400 17px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:14px 0 0;text-wrap:pretty;">{{ a.governance_body }}</p>
+    </div>
+  </section>
+</main>

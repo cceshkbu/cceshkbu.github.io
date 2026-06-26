@@ -1,0 +1,145 @@
+---
+title: "Research — CCES"
+---
+{% assign r = site.data.research %}
+{% assign pub = site.data.publications %}
+{% assign all_pubs = site.publications | sort: "path" %}
+
+<!-- Collect unique years -->
+{% assign years = "" | split: "" %}
+{% for p in all_pubs %}
+  {% unless years contains p.year %}
+    {% assign years = years | push: p.year %}
+  {% endunless %}
+{% endfor %}
+{% assign years_reversed = years | reverse %}
+
+<main>
+  <!-- Page hero -->
+  <section class="section-dark">
+    <div class="container page-hero">
+      <div class="eyebrow eyebrow--light">{{ site.data.site.nav.research }}</div>
+      <h1 class="page-hero__title">{{ r.intro_title }}</h1>
+      <p class="page-hero__lead">{{ r.intro_body }}</p>
+    </div>
+  </section>
+
+  <!-- Tab switcher -->
+  <div style="background:#f4f7fb;border-bottom:1px solid #e4eaf3;">
+    <div class="container" style="display:flex;gap:0;padding-top:4px;">
+      <button class="research-tab active" data-tab="themes" onclick="switchResearchTab('themes')">Research Themes</button>
+      <button class="research-tab" data-tab="publications" onclick="switchResearchTab('publications')">Selected Publications</button>
+    </div>
+  </div>
+
+  <!-- Tab: Research Themes -->
+  <div id="tab-themes">
+    <section class="section-padded--sm">
+      <div class="container">
+        <div class="eyebrow">{{ r.themes_eyebrow }}</div>
+        <h2 class="section-title" style="margin-bottom:36px;">{{ r.themes_title }}</h2>
+        <div class="grid-3">
+          {% for t in r.themes %}
+          <div class="card">
+            <div class="card__number">{{ t.no }}</div>
+            <h3 class="card__title">{{ t.title }}</h3>
+            <p class="card__body">{{ t.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- SDGs + Student engagement -->
+    <section class="section-light">
+      <div class="container research-theme-grid" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;">
+        <div>
+          <div class="eyebrow">{{ r.sdg_eyebrow }}</div>
+          <h2 class="section-title">{{ r.sdg_title }}</h2>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+            {% for s in r.sdgs %}
+            <div class="sdg-badge">
+              <span class="sdg-badge__code" translate="no">{{ s.code }}</span>
+              <div>
+                <div class="sdg-badge__label" translate="no">SDG {{ s.code }}</div>
+                <div class="sdg-badge__name">{{ s.name }}</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="info-box-dark" style="align-self:stretch;">
+          <div class="eyebrow eyebrow--light">{{ r.students_eyebrow }}</div>
+          <h2 class="section-title section-title--white" style="font-size:26px;">{{ r.students_title }}</h2>
+          <p>{{ r.students_body }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Tab: Selected Publications -->
+  <div id="tab-publications" style="display:none;">
+    <section style="padding:56px 0 72px;">
+      <div class="container-narrow">
+        {% for year in years_reversed %}
+        {% assign year_items = "" | split: "" %}
+        {% for p in all_pubs %}
+          {% if p.year == year %}
+            {% assign year_items = year_items | push: p %}
+          {% endif %}
+        {% endfor %}
+        <div class="pub-group">
+          <div class="pub-group__header">
+            <h2 class="pub-group__year" translate="no">{{ year }}</h2>
+            <span class="pub-group__count">{{ year_items.size }}{% if year_items.size == 1 %} item{% else %} items{% endif %}</span>
+          </div>
+          {% for p in year_items %}
+          <div class="pub-item">
+            <div class="pub-item__num" translate="no">{{ forloop.index | prepend: "00" | slice: -2, 2 }}</div>
+            <div>
+              <div class="pub-item__authors">{{ p.authors }}</div>
+              <div class="pub-item__title">{{ p.title }}</div>
+              <div class="pub-item__venue">{{ p.venue }}</div>
+              {% if p.link and p.link != "" %}
+              <a href="{{ p.link }}" target="_blank" class="pub-item__link">View paper ↗</a>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</main>
+
+<style>
+  .research-tab {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font: 600 15px 'Libre Franklin', 'Noto Sans TC', sans-serif;
+    color: #8a97ad;
+    padding: 16px 24px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .research-tab:hover { color: #16233a; }
+  .research-tab.active { color: #0b3a78; border-bottom-color: #c79a3e; }
+</style>
+
+<script>
+function switchResearchTab(tab) {
+  document.getElementById('tab-themes').style.display = tab === 'themes' ? 'block' : 'none';
+  document.getElementById('tab-publications').style.display = tab === 'publications' ? 'block' : 'none';
+  document.querySelectorAll('.research-tab').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-tab') === tab);
+  });
+  try { localStorage.setItem('cces_research_tab', tab); } catch (e) {}
+}
+// Restore last selected tab
+try {
+  var saved = localStorage.getItem('cces_research_tab');
+  if (saved === 'publications') switchResearchTab('publications');
+} catch (e) {}
+</script>

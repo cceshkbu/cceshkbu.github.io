@@ -1,0 +1,47 @@
+title: "Centre for Climate and Environmental Sustainability"
+description: "Hong Kong Baptist University — Climate science and AI for a sustainable future"
+url: ""
+baseurl: ""
+
+# Build settings
+future: true
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  news:
+    output: true
+    permalink: /news/:name/
+  publications:
+    output: false
+  people:
+    output: true
+    permalink: /people/:name/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md
+  - support.js
+  - index_original.html
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      type: "news"
+      path: ""
+    values:
+      layout: news
+  - scope:
+      type: "people"
+      path: ""
+    values:
+      layout: person

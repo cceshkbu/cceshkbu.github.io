@@ -1,0 +1,36 @@
+{% assign s = site.data.site %}
+<header class="site-header">
+  <!-- Main bar -->
+  <div class="main-bar">
+    <div class="container main-bar__inner">
+      <a href="{{ '/' | relative_url }}" class="logo-link">
+        <!-- LOGO 1 — HKBU university logo -->
+        <div class="logo-placeholder logo-placeholder--hkbu" translate="no">HKBU<br>logo</div>
+        <span class="logo-divider"></span>
+        <!-- LOGO 2 — Centre (CCES) logo -->
+        <div class="logo-placeholder logo-placeholder--centre" translate="no">Centre<br>logo</div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">{{ s.nav.home }}</a>
+        <a href="{{ '/about.html' | relative_url }}" class="nav-link{% if page.url == '/about.html' %} active{% endif %}">{{ s.nav.about }}</a>
+        <a href="{{ '/research.html' | relative_url }}" class="nav-link{% if page.url == '/research.html' %} active{% endif %}">{{ s.nav.research }}</a>
+        <a href="{{ '/people.html' | relative_url }}" class="nav-link{% if page.url == '/people.html' %} active{% endif %}">{{ s.nav.people }}</a>
+        <a href="{{ '/news.html' | relative_url }}" class="nav-link{% if page.url == '/news.html' %} active{% endif %}">{{ s.nav.news }}</a>
+      </nav>
+
+      <div class="lang-switcher" translate="no">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('zh')">繁</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Machine-translation notice (shown when 繁 is active) -->
+<div id="translate-notice" class="translate-notice" style="display:none;" translate="no">
+  <div class="translate-notice__inner">
+    <span class="translate-notice__icon">i</span>
+    <span class="translate-notice__text">{{ s.translated_notice }}</span>
+  </div>
+</div>

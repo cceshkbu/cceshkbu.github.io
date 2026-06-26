@@ -1,0 +1,39 @@
+---
+title: "Contact — CCES"
+---
+{% assign c = site.data.contact %}
+
+<main>
+  <!-- Page hero -->
+  <section class="section-dark">
+    <div class="container page-hero">
+      <div class="eyebrow eyebrow--light">{{ site.data.site.nav.contact }}</div>
+      <h1 class="page-hero__title">{{ c.intro_title }}</h1>
+      <p class="page-hero__lead" style="max-width:46em;">{{ c.lead }}</p>
+    </div>
+  </section>
+
+  <!-- Contact info + Map -->
+  <section class="section-padded--md">
+    <div class="container contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <div style="display:flex;flex-direction:column;gap:22px;">
+        <div>
+          <div class="contact-item__label">{{ c.email_label }}</div>
+          <a href="mailto:{{ c.email }}" class="contact-item__value" translate="no">{{ c.email }}</a>
+        </div>
+        <div>
+          <div class="contact-item__label">{{ c.tel_label }}</div>
+          <div class="contact-item__value" style="color:#16233a;" translate="no">{{ c.tel }}</div>
+        </div>
+        <div>
+          <div class="contact-item__label">{{ c.addr_label }}</div>
+          <div class="contact-item__value--text">{{ c.address }}</div>
+          <div class="contact-item__note">{{ c.office }}</div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <span class="img-placeholder__label img-placeholder__label--dark" translate="no">— campus map / location —</span>
+      </div>
+    </div>
+  </section>
+</main>

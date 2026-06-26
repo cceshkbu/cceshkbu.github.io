@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <div id="google_translate_element" style="position:absolute;width:0;height:0;overflow:hidden;left:-9999px;"></div>
+
+  {% include header.html %}
+
+  <main>
+    <!-- Page hero -->
+    <section class="section-dark">
+      <div class="container page-hero">
+        <div class="eyebrow eyebrow--light">{{ site.data.site.nav.news }}</div>
+        <h1 class="page-hero__title">{{ page.title }}</h1>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section style="padding:56px 0 72px;">
+      <div class="container-narrower">
+        <article>
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;">
+            <span style="background:#fbf4e2;color:#a07f2c;padding:3px 10px;border-radius:3px;font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.04em;">{{ page.tag }}</span>
+            <span style="color:#9aa7bb;font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.04em;">{{ page.date | date: "%Y" }}</span>
+          </div>
+
+          {% if page.image %}
+          <div style="margin-bottom:28px;border-radius:4px;overflow:hidden;">
+            <img src="{{ '/assets/images/' | append: page.image | relative_url }}" alt="{{ page.title }}" style="width:100%;max-height:420px;object-fit:cover;display:block;">
+          </div>
+          {% endif %}
+
+          <div style="font:400 18px/1.8 'Libre Franklin','Noto Sans TC',sans-serif;color:#3c4a61;">
+            {{ content }}
+          </div>
+        </article>
+        <div style="margin-top:48px;padding-top:24px;border-top:1px solid #e4eaf3;">
+          <a href="{{ '/news.html' | relative_url }}" style="font:600 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:#0b3a78;text-decoration:none;">← Back to all news</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include footer.html %}
+
+  <script src="{{ '/assets/js/translate.js' | relative_url }}"></script>
+</body>
+</html>

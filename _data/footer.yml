@@ -1,0 +1,16 @@
+# ============================================================
+# 頁尾 (Footer) 內容
+# ============================================================
+
+blurb: "An interdisciplinary research institute at HKBU advancing climate resilience and environmental sustainability through science, technology, and policy engagement."
+explore_title: "Explore"
+contact_title: "Enquiries"
+links_title: "Related links"
+copyright: "© 2026 Centre for Climate and Environmental Sustainability, HKBU. All rights reserved."
+host: "Hosted by the Department of Geography, HKBU"
+
+external_links:
+  - label: "Hong Kong Baptist University ↗"
+    url: "https://www.hkbu.edu.hk/"
+  - label: "Department of Geography ↗"
+    url: "https://geog.hkbu.edu.hk/"

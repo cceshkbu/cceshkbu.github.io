@@ -1,0 +1,36 @@
+# ============================================================
+# 研究 (Research) 內容
+# ============================================================
+
+intro_title: "Research programme"
+intro_body: "Our research is organised around three interconnected themes, translating findings into tangible societal impact and contributing directly to the UN Sustainable Development Goals."
+
+# --- 三大研究主題 ---
+themes_eyebrow: "Three themes"
+themes_title: "What we work on"
+themes:
+  - no: "Theme 01"
+    title: "Climate risk & urban resilience"
+    body: "Quantifying climate impacts on regional and global ecosystems and on the resilience of dense coastal cities like Hong Kong."
+  - no: "Theme 02"
+    title: "Atmospheric chemistry & health"
+    body: "Linking air quality and atmospheric processes to public health outcomes through observation and modelling."
+  - no: "Theme 03"
+    title: "AI-driven environmental governance"
+    body: "Using AI, data analytics, and climate modelling to design inclusive, evidence-based interventions and governance frameworks."
+
+# --- 可持續發展目標 ---
+sdg_eyebrow: "Impact"
+sdg_title: "Sustainable Development Goals"
+sdgs:
+  - code: "13"
+    name: "Climate Action"
+  - code: "11"
+    name: "Sustainable Cities & Communities"
+  - code: "15"
+    name: "Life on Land"
+
+# --- 學生參與 ---
+students_eyebrow: "Education"
+students_title: "Student engagement"
+students_body: "CCES offers externally funded MPhil and PhD scholarships, with each postgraduate co-supervised across two departments. A Summer Climate Research Internship and embedded course modules engage undergraduates, and students have opportunities to present their work at the CCES International Conference."

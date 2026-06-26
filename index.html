@@ -1,771 +1,119 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Libre+Franklin:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0}
-a{color:inherit}
-::selection{background:#c79a3e;color:#fff}
-/* hide Google Translate's injected chrome */
-.goog-te-banner-frame,.goog-te-gadget-icon,#goog-gt-tt,.goog-te-balloon-frame,.goog-tooltip{display:none!important}
-.goog-te-gadget{height:0;overflow:hidden;font-size:0!important;color:transparent!important}
-body{top:0!important;position:static!important}
-font{background:transparent!important;box-shadow:none!important;vertical-align:baseline!important}
-/* ===== RESPONSIVE (mobile / tablet) ===== */
-@media (max-width: 900px){
-  .rc{padding-left:22px!important;padding-right:22px!important}
-  .r2{grid-template-columns:1fr!important}
-  .r3{grid-template-columns:1fr!important}
-  .rF{grid-template-columns:1fr!important;gap:30px!important}
-  .r5{grid-template-columns:repeat(2,1fr)!important}
-  .r-h1{font-size:33px!important;line-height:1.16!important}
-  .r-img{min-height:170px!important;margin-top:0!important;margin-bottom:22px!important}
-  .r-nav{gap:14px!important}
-  .r-nav a{font-size:14px!important;padding-top:12px!important;padding-bottom:12px!important;border-bottom-width:2px!important}
-}
-@media (max-width: 520px){
-  .r5{grid-template-columns:1fr!important}
-  .r-h1{font-size:27px!important}
-  .rc{padding-left:18px!important;padding-right:18px!important}
-}
-</style>
-<script>
-window.googleTranslateElementInit = function () {
-  try {
-    new google.translate.TranslateElement(
-      { pageLanguage: 'en', includedLanguages: 'zh-TW', autoDisplay: false },
-      'google_translate_element'
-    );
-  } catch (e) {}
-};
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</helmet>
+---
+title: "CCES — Centre for Climate and Environmental Sustainability"
+---
+{% assign h = site.data.home %}
 
-<div style="font-family:'Libre Franklin','Noto Sans TC',sans-serif;color:#16233a;background:#fff;min-height:100vh;">
-  <div id="google_translate_element" style="position:absolute;width:0;height:0;overflow:hidden;left:-9999px;"></div>
-
-  <!-- ============ HEADER ============ -->
-  <header style="position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(0,0,0,.06);">
-    <!-- utility bar -->
-    <div style="background:#082654;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:38px;">
-        <span style="font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.62);font-weight:500;">{{ d.brand.parent }}</span>
-        <div translate="no" style="display:flex;align-items:center;gap:2px;">
-          <sc-for list="{{ langs }}" as="lang" hint-placeholder-count="2">
-            <button onClick="{{ lang.onClick }}" style="{{ lang.style }}">{{ lang.label }}</button>
-          </sc-for>
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <div class="eyebrow eyebrow--light">{{ h.hero_eyebrow }}</div>
+        <h1 class="hero__title">{{ h.hero_title }}</h1>
+        <p class="hero__lead">{{ h.hero_lead }}</p>
+        <div class="hero__buttons">
+          <a href="{{ '/research.html' | relative_url }}" class="btn btn--primary">{{ h.cta_primary }}</a>
+          <a href="{{ '/people.html' | relative_url }}" class="btn btn--outline">{{ h.cta_secondary }}</a>
         </div>
       </div>
+      <!-- Hero image -->
+      {% if h.hero_image %}
+      <div style="align-self:stretch;margin:48px 0;border-radius:4px;overflow:hidden;">
+        <img src="{{ '/assets/images/' | append: h.hero_image | relative_url }}" alt="CCES" style="width:100%;height:100%;min-height:300px;object-fit:cover;display:block;">
+      </div>
+      {% else %}
+      <div class="img-placeholder">
+        <span class="img-placeholder__label" translate="no">— centre / campus photo —</span>
+      </div>
+      {% endif %}
     </div>
-    <!-- main bar -->
-    <div style="background:#0b3a78;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-        <!-- ===== LOGO AREA =====================================================
-             Two logo slots. To use a real logo, replace the dashed <div>
-             placeholder with an image, e.g.:
-                 <img src="hkbu-logo.svg" alt="HKBU" style="height:42px;width:auto;">
-             Use white / reversed-out versions since the bar is dark navy.
-             Once the Centre logo includes its name, you may delete the
-             text block at the end of this link.
-        ==================================================================== -->
-        <a onClick="{{ goHome }}" style="display:flex;align-items:center;gap:16px;cursor:pointer;text-decoration:none;padding:12px 0;">
-          <!-- LOGO 1 — HKBU university logo -->
-          <div translate="no" style="height:46px;width:128px;border:1px dashed rgba(255,255,255,.5);border-radius:3px;display:flex;align-items:center;justify-content:center;text-align:center;font:500 10px/1.3 'Libre Franklin',monospace;color:rgba(255,255,255,.72);letter-spacing:.04em;">HKBU<br>logo</div>
-          <!-- divider -->
-          <span style="width:1px;height:38px;background:rgba(255,255,255,.28);"></span>
-          <!-- LOGO 2 — Centre (CCES) logo -->
-          <div translate="no" style="height:46px;width:116px;border:1px dashed rgba(255,255,255,.5);border-radius:3px;display:flex;align-items:center;justify-content:center;text-align:center;font:500 10px/1.3 'Libre Franklin',monospace;color:rgba(255,255,255,.72);letter-spacing:.04em;">Centre<br>logo</div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section-padded">
+    <div class="container">
+      <div class="eyebrow">{{ h.obj_intro }}</div>
+      <h2 class="section-title">{{ h.obj_heading }}</h2>
+      <div class="grid-3" style="margin-top:34px;">
+        {% for o in h.objectives %}
+        <div class="card">
+          <div class="card__tag">{{ o.tag }}</div>
+          <h3 class="card__title">{{ o.title }}</h3>
+          <p class="card__body">{{ o.body }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Director's welcome -->
+  <section class="section-dark">
+    <div class="container dir-grid" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:center;">
+      {% assign director_img = site.data.people.director_image %}
+      {% if director_img %}
+      <div style="margin:64px 0;border-radius:4px;overflow:hidden;">
+        <img src="{{ '/assets/images/' | append: director_img | relative_url }}" alt="{{ site.data.people.director_name }}" style="width:100%;min-height:300px;object-fit:cover;display:block;">
+      </div>
+      {% else %}
+      <div class="img-placeholder" style="margin:64px 0;min-height:300px;">
+        <span class="img-placeholder__label" translate="no">— director portrait —</span>
+      </div>
+      {% endif %}
+      <div style="padding:64px 0;">
+        <div class="eyebrow eyebrow--light">{{ h.welcome_title }}</div>
+        <p class="welcome__text">{{ h.welcome_body }}</p>
+        <div class="welcome__director">{{ h.director }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News preview -->
+  <section class="section-padded">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <div>
+          <div class="eyebrow">{{ h.news_title }}</div>
+          <h2 class="section-title">{{ h.news_heading }}</h2>
+        </div>
+        <a href="{{ '/news.html' | relative_url }}" class="btn btn--outline-dark">{{ h.view_all }}</a>
+      </div>
+      <div class="grid-3" style="margin-top:32px;">
+        {% assign sorted_news = site.news | sort: "date" | reverse %}
+        {% for n in sorted_news limit:3 %}
+        <a href="{{ n.url | relative_url }}" class="news-card" style="text-decoration:none;color:inherit;">
+          {% if n.image %}
+          <div style="height:130px;overflow:hidden;">
+            <img src="{{ '/assets/images/' | append: n.image | relative_url }}" alt="{{ n.title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          {% else %}
+          <div class="news-card__image"></div>
+          {% endif %}
+          <div class="news-card__body">
+            <div class="news-card__meta">
+              <span>{{ n.tag }}</span>
+              <span class="news-card__date">{{ n.date | date: "%Y" }}</span>
+            </div>
+            <h3 class="news-card__title">{{ n.title }}</h3>
+            {% if n.excerpt %}
+            <p class="news-card__body-text">{{ n.excerpt }}</p>
+            {% else %}
+            <p class="news-card__body-text">{{ n.content | strip_html | truncatewords: 20 }}</p>
+            {% endif %}
+          </div>
         </a>
-        <!-- nav -->
-        <nav class="r-nav" style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;">
-          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
-            <a onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</a>
-          </sc-for>
-        </nav>
+        {% endfor %}
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- machine-translation notice (shown when 繁 is active) -->
-  <sc-if value="{{ isZh }}" hint-placeholder-val="{{ false }}">
-    <div translate="no" style="background:#fbf4e2;border-bottom:1px solid #ecdcae;">
-      <div style="max-width:1180px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:10px;">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#c79a3e;color:#fff;font-size:12px;font-weight:700;flex:0 0 auto;">i</span>
-        <span style="font-size:13px;color:#7a652e;line-height:1.5;font-family:'Noto Sans TC',sans-serif;">{{ d.translatedNotice }}</span>
-      </div>
-    </div>
-  </sc-if>
-
-  <!-- ============ HOME ============ -->
-  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-  <main>
-    <!-- hero -->
-    <section style="background:linear-gradient(135deg,#0b3a78 0%,#082a5e 100%);color:#fff;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;min-height:440px;">
-        <div style="padding:64px 0;">
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.home.heroEyebrow }}</div>
-          <h1 class="r-h1" style="font:600 46px/1.12 'Source Serif 4','Noto Serif TC',Georgia,serif;letter-spacing:-.015em;margin:16px 0 0;color:#fff;text-wrap:balance;">{{ d.home.heroTitle }}</h1>
-          <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:22px 0 0;max-width:34em;text-wrap:pretty;">{{ d.home.heroLead }}</p>
-          <div style="display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;">
-            <button onClick="{{ goResearch }}" style="background:#c79a3e;color:#1c1606;border:none;font:600 15px 'Libre Franklin','Noto Sans TC',sans-serif;padding:13px 26px;border-radius:3px;cursor:pointer;">{{ d.home.ctaPrimary }}</button>
-            <button onClick="{{ goPeople }}" style="background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);font:600 15px 'Libre Franklin','Noto Sans TC',sans-serif;padding:12px 24px;border-radius:3px;cursor:pointer;">{{ d.home.ctaSecondary }}</button>
-          </div>
-        </div>
-        <!-- hero image placeholder -->
-        <div class="r-img" style="align-self:stretch;min-height:300px;margin:48px 0;border-radius:4px;background:repeating-linear-gradient(45deg,#0f4488,#0f4488 11px,#0d3c79 11px,#0d3c79 22px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:flex-end;justify-content:center;padding:16px;">
-          <span translate="no" style="font:500 12px 'Libre Franklin',monospace;letter-spacing:.04em;color:rgba(255,255,255,.65);background:rgba(8,38,84,.65);padding:6px 12px;border-radius:3px;">— centre / campus photo —</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- objectives -->
-    <section style="padding:78px 0;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.home.objIntro }}</div>
-        <h2 style="font:600 32px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;letter-spacing:-.01em;">{{ d.home.objHeading }}</h2>
-        <div class="r3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;">
-          <sc-for list="{{ d.objectives }}" as="o" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #dde4ef;border-radius:4px;padding:30px;">
-              <div style="font:700 14px 'Source Serif 4',Georgia,serif;color:#c79a3e;letter-spacing:.04em;">{{ o.tag }}</div>
-              <h3 style="font:600 21px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:12px 0 0;">{{ o.title }}</h3>
-              <p style="font:400 16px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:12px 0 0;text-wrap:pretty;">{{ o.body }}</p>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <!-- director's welcome -->
-    <section style="background:#0b3a78;color:#fff;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:center;">
-        <div class="r-img" style="margin:64px 0;min-height:300px;border-radius:4px;background:repeating-linear-gradient(45deg,#0f4488,#0f4488 11px,#0d3c79 11px,#0d3c79 22px);border:1px solid rgba(255,255,255,.18);display:flex;align-items:flex-end;justify-content:center;padding:16px;">
-          <span translate="no" style="font:500 12px 'Libre Franklin',monospace;color:rgba(255,255,255,.65);background:rgba(8,38,84,.65);padding:6px 12px;border-radius:3px;">— director portrait —</span>
-        </div>
-        <div style="padding:64px 0;">
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.home.welcomeTitle }}</div>
-          <p style="font:500 24px/1.5 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:18px 0 0;text-wrap:pretty;">{{ d.home.welcomeBody }}</p>
-          <div style="margin-top:26px;font:600 15px 'Libre Franklin','Noto Sans TC',sans-serif;color:#e0b75a;">{{ d.home.director }}</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- news preview -->
-    <section style="padding:78px 0;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;">
-          <div>
-            <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.home.newsTitle }}</div>
-            <h2 style="font:600 32px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;">{{ d.home.newsHeading }}</h2>
-          </div>
-          <button onClick="{{ goNews }}" style="background:transparent;border:1.5px solid #c2cede;color:#0b3a78;font:600 14px 'Libre Franklin','Noto Sans TC',sans-serif;padding:10px 20px;border-radius:3px;cursor:pointer;">{{ d.home.viewAll }}</button>
-        </div>
-        <div class="r3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;">
-          <sc-for list="{{ newsPreview }}" as="n" hint-placeholder-count="3">
-            <article style="border:1px solid #dde4ef;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;">
-              <div style="height:130px;background:repeating-linear-gradient(45deg,#eef2f8,#eef2f8 11px,#e6ecf5 11px,#e6ecf5 22px);"></div>
-              <div style="padding:24px;flex:1;">
-                <div style="display:flex;gap:10px;align-items:center;font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;color:#c79a3e;letter-spacing:.04em;">
-                  <span>{{ n.tag }}</span><span style="color:#9aa7bb;">{{ n.date }}</span>
-                </div>
-                <h3 style="font:600 18px/1.35 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;text-wrap:pretty;">{{ n.title }}</h3>
-                <p style="font:400 15px/1.6 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:10px 0 0;">{{ n.body }}</p>
-              </div>
-            </article>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <!-- contact CTA -->
-    <section style="background:#082654;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;">
-        <div>
-          <h2 style="font:600 28px/1.25 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:0;">{{ d.home.ctaBandTitle }}</h2>
-          <p style="font:400 16px/1.6 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.78);margin:10px 0 0;">{{ d.home.ctaBandBody }}</p>
-        </div>
-        <button onClick="{{ goContact }}" style="background:#c79a3e;color:#1c1606;border:none;font:600 15px 'Libre Franklin','Noto Sans TC',sans-serif;padding:14px 28px;border-radius:3px;cursor:pointer;white-space:nowrap;">{{ d.home.ctaBandBtn }}</button>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ ABOUT ============ -->
-  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.about }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.about.introTitle }}</h1>
-        <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:16px 0 0;max-width:50em;text-wrap:pretty;">{{ d.about.missionLead }}</p>
-      </div>
-    </section>
-
-    <section style="padding:70px 0;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.home.objIntro }}</div>
-        <h2 style="font:600 30px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;">{{ d.home.objHeading }}</h2>
-        <div class="r3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;">
-          <sc-for list="{{ d.objectives }}" as="o" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #dde4ef;border-radius:4px;padding:30px;">
-              <div style="font:700 14px 'Source Serif 4',Georgia,serif;color:#c79a3e;letter-spacing:.04em;">{{ o.tag }}</div>
-              <h3 style="font:600 21px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:12px 0 0;">{{ o.title }}</h3>
-              <p style="font:400 16px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:12px 0 0;text-wrap:pretty;">{{ o.body }}</p>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:#f4f7fb;padding:70px 0;border-top:1px solid #e4eaf3;border-bottom:1px solid #e4eaf3;">
-      <div class="rc" style="max-width:820px;margin:0 auto;padding:0 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.about.govEyebrow }}</div>
-        <h2 style="font:600 28px/1.25 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;">{{ d.about.governanceTitle }}</h2>
-        <p style="font:400 17px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:14px 0 0;text-wrap:pretty;">{{ d.about.governanceBody }}</p>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ RESEARCH ============ -->
-  <sc-if value="{{ isResearch }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.research }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.research.introTitle }}</h1>
-        <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:16px 0 0;max-width:50em;text-wrap:pretty;">{{ d.research.introBody }}</p>
-      </div>
-    </section>
-
-    <section style="padding:70px 0;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.research.themesEyebrow }}</div>
-        <h2 style="font:600 30px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 36px;">{{ d.research.themesTitle }}</h2>
-        <div class="r3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-          <sc-for list="{{ d.research.themes }}" as="t" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #dde4ef;border-radius:4px;padding:30px;">
-              <div style="font:700 15px 'Source Serif 4',Georgia,serif;color:#c79a3e;">{{ t.no }}</div>
-              <h3 style="font:600 20px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:12px 0 0;">{{ t.title }}</h3>
-              <p style="font:400 16px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:12px 0 0;text-wrap:pretty;">{{ t.body }}</p>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:#f4f7fb;padding:70px 0;border-top:1px solid #e4eaf3;border-bottom:1px solid #e4eaf3;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start;">
-        <div>
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.research.sdgEyebrow }}</div>
-          <h2 style="font:600 30px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 0;">{{ d.research.sdgTitle }}</h2>
-          <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
-            <sc-for list="{{ d.research.sdgs }}" as="s" hint-placeholder-count="3">
-              <div style="display:flex;align-items:center;gap:16px;border:1px solid #dde4ef;border-radius:4px;padding:14px 18px;">
-                <span translate="no" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:3px;background:#0b3a78;color:#fff;font:700 18px 'Source Serif 4',Georgia,serif;flex:0 0 auto;">{{ s.code }}</span>
-                <div>
-                  <div translate="no" style="font:500 12px 'Libre Franklin',sans-serif;color:#9aa7bb;letter-spacing:.04em;">SDG {{ s.code }}</div>
-                  <div style="font:600 17px 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;">{{ s.name }}</div>
-                </div>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-        <div style="background:#0b3a78;border-radius:4px;padding:38px;color:#fff;align-self:stretch;">
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.research.studentsEyebrow }}</div>
-          <h2 style="font:600 26px/1.25 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:10px 0 0;">{{ d.research.studentsTitle }}</h2>
-          <p style="font:400 17px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.84);margin:16px 0 0;text-wrap:pretty;">{{ d.research.studentsBody }}</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-  </sc-if>
-
-  <!-- ============ OUTPUT / PUBLICATIONS ============ -->
-  <sc-if value="{{ isOutput }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.output }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.research.pubTitle }}</h1>
-        <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:16px 0 0;max-width:50em;text-wrap:pretty;">{{ d.research.pubLead }}</p>
-      </div>
-    </section>
-
-    <section style="padding:56px 0 72px;">
-      <div class="rc" style="max-width:980px;margin:0 auto;padding:0 32px;">
-        <sc-for list="{{ pubGroups }}" as="g" hint-placeholder-count="2">
-          <div style="margin-bottom:40px;">
-            <div style="display:flex;align-items:baseline;gap:12px;border-bottom:2px solid #0b3a78;padding-bottom:10px;">
-              <h2 translate="no" style="font:700 24px 'Source Serif 4',Georgia,serif;color:#0b3a78;margin:0;">{{ g.year }}</h2>
-              <span style="font:500 13px 'Libre Franklin','Noto Sans TC',sans-serif;color:#9aa7bb;">{{ g.countLabel }}</span>
-            </div>
-            <sc-for list="{{ g.items }}" as="p" hint-placeholder-count="3">
-              <div style="display:grid;grid-template-columns:34px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid #e4eaf3;align-items:start;">
-                <div translate="no" style="font:700 15px 'Source Serif 4',Georgia,serif;color:#c79a3e;padding-top:3px;">{{ p.num }}</div>
-                <div>
-                  <div style="font:400 14px/1.5 'Libre Franklin','Noto Sans TC',sans-serif;color:#8a97ad;">{{ p.authors }}</div>
-                  <div style="font:600 18px/1.4 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:4px 0 0;text-wrap:pretty;">{{ p.title }}</div>
-                  <div style="font:400 15px/1.55 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:5px 0 0;font-style:italic;">{{ p.venue }}</div>
-                  <sc-if value="{{ p.hasLink }}" hint-placeholder-val="{{ false }}">
-                    <a href="{{ p.link }}" target="_blank" style="display:inline-block;margin-top:8px;font:600 13px 'Libre Franklin','Noto Sans TC',sans-serif;color:#1657c4;text-decoration:none;">View paper ↗</a>
-                  </sc-if>
-                </div>
-              </div>
-            </sc-for>
-          </div>
-        </sc-for>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ PEOPLE ============ -->
-  <sc-if value="{{ isPeople }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.people }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.people.introTitle }}</h1>
-      </div>
-    </section>
-
-    <!-- director -->
-    <section style="padding:64px 0 56px;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:.42fr 1fr;gap:44px;align-items:center;">
-        <div style="aspect-ratio:1/1;border-radius:4px;background:repeating-linear-gradient(45deg,#eef2f8,#eef2f8 11px,#e6ecf5 11px,#e6ecf5 22px);display:flex;align-items:center;justify-content:center;">
-          <span translate="no" style="font:700 44px 'Source Serif 4',Georgia,serif;color:#b9c4d6;">MG</span>
-        </div>
-        <div>
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.people.directorRole }}</div>
-          <h2 style="font:600 30px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:8px 0 0;">{{ d.people.directorName }}</h2>
-          <div style="font:500 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:#8a97ad;margin-top:6px;letter-spacing:.03em;">{{ d.people.directorAffil }}</div>
-          <p style="font:400 17px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:18px 0 0;max-width:48em;text-wrap:pretty;">{{ d.people.directorBio }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- management committee -->
-    <section style="background:#f4f7fb;padding:64px 0;border-top:1px solid #e4eaf3;border-bottom:1px solid #e4eaf3;">
-      <div class="rc" style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.people.committeeEyebrow }}</div>
-        <h2 style="font:600 30px/1.2 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 32px;">{{ d.people.committeeTitle }}</h2>
-        <div class="r5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:18px;">
-          <sc-for list="{{ d.people.committee }}" as="m" hint-placeholder-count="5">
-            <div style="background:#fff;border:1px solid #dde4ef;border-radius:4px;padding:24px 18px;text-align:center;">
-              <div translate="no" style="width:62px;height:62px;margin:0 auto;border-radius:50%;background:#0b3a78;color:#fff;display:flex;align-items:center;justify-content:center;font:600 20px 'Source Serif 4',Georgia,serif;">{{ m.initials }}</div>
-              <div style="font:600 16px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin-top:14px;">{{ m.name }}</div>
-              <div style="font:500 12px 'Libre Franklin','Noto Sans TC',sans-serif;color:#8a97ad;margin-top:6px;letter-spacing:.02em;">{{ m.affil }}</div>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <!-- core team + advisory -->
-    <section style="padding:64px 0;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;">
-        <div>
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c79a3e;">{{ d.people.teamEyebrow }}</div>
-          <h2 style="font:600 28px/1.25 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:10px 0 24px;">{{ d.people.teamTitle }}</h2>
-          <div class="r2" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-            <sc-for list="{{ d.people.team }}" as="t" hint-placeholder-count="4">
-              <div style="border:1px solid #dde4ef;border-radius:4px;padding:22px;display:flex;align-items:baseline;gap:14px;">
-                <span translate="no" style="font:700 30px 'Source Serif 4',Georgia,serif;color:#0b3a78;">{{ t.count }}</span>
-                <span style="font:500 15px/1.4 'Libre Franklin','Noto Sans TC',sans-serif;color:#3c4a61;">{{ t.role }}</span>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-        <div style="background:#0b3a78;border-radius:4px;padding:34px;color:#fff;">
-          <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.people.advisoryEyebrow }}</div>
-          <h2 style="font:600 23px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:10px 0 0;">{{ d.people.advisoryTitle }}</h2>
-          <p style="font:400 16px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.84);margin:14px 0 0;text-wrap:pretty;">{{ d.people.advisoryBody }}</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ NEWS ============ -->
-  <sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.news }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.news.introTitle }}</h1>
-        <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:16px 0 0;max-width:50em;">{{ d.news.introLead }}</p>
-      </div>
-    </section>
-    <section style="padding:64px 0;">
-      <div class="rc" style="max-width:900px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:22px;">
-        <sc-for list="{{ d.news.items }}" as="n" hint-placeholder-count="3">
-          <article class="r2" style="display:grid;grid-template-columns:180px 1fr;gap:26px;border:1px solid #dde4ef;border-radius:4px;overflow:hidden;">
-            <div style="background:repeating-linear-gradient(45deg,#eef2f8,#eef2f8 11px,#e6ecf5 11px,#e6ecf5 22px);min-height:140px;"></div>
-            <div style="padding:26px 26px 26px 0;">
-              <div style="display:flex;gap:12px;align-items:center;font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.04em;">
-                <span style="background:#fbf4e2;color:#a07f2c;padding:3px 10px;border-radius:3px;">{{ n.tag }}</span>
-                <span style="color:#9aa7bb;">{{ n.date }}</span>
-              </div>
-              <h2 style="font:600 21px/1.3 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#16233a;margin:12px 0 0;text-wrap:pretty;">{{ n.title }}</h2>
-              <p style="font:400 16px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:10px 0 0;">{{ n.body }}</p>
-            </div>
-          </article>
-        </sc-for>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ CONTACT ============ -->
-  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
-  <main>
-    <section style="background:#0b3a78;color:#fff;">
-      <div style="max-width:1180px;margin:0 auto;padding:54px 32px;">
-        <div style="font:600 12px/1.4 'Libre Franklin',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e0b75a;">{{ d.nav.contact }}</div>
-        <h1 style="font:600 40px/1.15 'Source Serif 4','Noto Serif TC',Georgia,serif;color:#fff;margin:12px 0 0;letter-spacing:-.01em;">{{ d.contact.introTitle }}</h1>
-        <p style="font:400 18px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.82);margin:16px 0 0;max-width:46em;">{{ d.contact.lead }}</p>
-      </div>
-    </section>
-    <section style="padding:64px 0;">
-      <div class="rc r2" style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
-        <div style="display:flex;flex-direction:column;gap:22px;">
-          <div>
-            <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#9aa7bb;">{{ d.contact.emailLabel }}</div>
-            <a href="mailto:cces@hkbu.edu.hk" translate="no" style="font:600 19px 'Source Serif 4',Georgia,serif;color:#0b3a78;text-decoration:none;">{{ d.contact.email }}</a>
-          </div>
-          <div>
-            <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#9aa7bb;">{{ d.contact.telLabel }}</div>
-            <div translate="no" style="font:600 19px 'Source Serif 4',Georgia,serif;color:#16233a;">{{ d.contact.tel }}</div>
-          </div>
-          <div>
-            <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#9aa7bb;">{{ d.contact.addrLabel }}</div>
-            <div style="font:400 17px/1.6 'Libre Franklin','Noto Sans TC',sans-serif;color:#3c4a61;">{{ d.contact.address }}</div>
-            <div style="font:400 14px/1.6 'Libre Franklin','Noto Sans TC',sans-serif;color:#8a97ad;margin-top:8px;">{{ d.contact.office }}</div>
-          </div>
-        </div>
-        <div style="background:#f4f7fb;border:1px solid #e4eaf3;border-radius:4px;display:flex;align-items:flex-end;justify-content:center;min-height:300px;padding:16px;">
-          <span translate="no" style="font:500 12px 'Libre Franklin',monospace;color:#9aa7bb;background:#fff;padding:6px 12px;border-radius:3px;border:1px solid #e4eaf3;">— campus map / location —</span>
-        </div>
-      </div>
-    </section>
-  </main>
-  </sc-if>
-
-  <!-- ============ FOOTER ============ -->
-  <footer style="background:#082654;color:rgba(255,255,255,.78);">
-    <div class="rc rF" style="max-width:1180px;margin:0 auto;padding:56px 32px 0;display:grid;grid-template-columns:1.6fr 1fr 1.3fr;gap:44px;">
+  <!-- Contact CTA -->
+  <section class="cta-band">
+    <div class="container cta-band__inner">
       <div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span translate="no" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:700;font-size:14px;border-radius:3px;">CCES</span>
-          <span style="color:#fff;font:600 15px 'Source Serif 4','Noto Serif TC',Georgia,serif;line-height:1.3;">{{ d.brand.name }}</span>
-        </div>
-        <p style="font:400 14px/1.65 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.6);margin:18px 0 0;max-width:30em;">{{ d.footer.blurb }}</p>
+        <h2 class="cta-band__title">{{ h.cta_band_title }}</h2>
+        <p class="cta-band__body">{{ h.cta_band_body }}</p>
       </div>
-      <div>
-        <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e0b75a;">{{ d.footer.exploreTitle }}</div>
-        <div style="display:flex;flex-direction:column;gap:11px;margin-top:16px;">
-          <sc-for list="{{ footerNav }}" as="f" hint-placeholder-count="6">
-            <a onClick="{{ f.onClick }}" style="font:400 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.78);text-decoration:none;cursor:pointer;">{{ f.label }}</a>
-          </sc-for>
-        </div>
-      </div>
-      <div>
-        <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e0b75a;">{{ d.footer.contactTitle }}</div>
-        <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px;font:400 14px/1.55 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.7);">
-          <a href="mailto:cces@hkbu.edu.hk" translate="no" style="color:rgba(255,255,255,.78);text-decoration:none;">{{ d.contact.email }}</a>
-          <span>{{ d.contact.address }}</span>
-        </div>
-        <div style="font:600 12px 'Libre Franklin','Noto Sans TC',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e0b75a;margin-top:24px;">{{ d.footer.linksTitle }}</div>
-        <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;">
-          <a href="https://www.hkbu.edu.hk/" target="_blank" style="font:400 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.78);text-decoration:none;">Hong Kong Baptist University ↗</a>
-          <a href="https://geog.hkbu.edu.hk/" target="_blank" style="font:400 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.78);text-decoration:none;">Department of Geography ↗</a>
-        </div>
-      </div>
+      <a href="{{ '/contact.html' | relative_url }}" class="btn btn--primary-sm">{{ h.cta_band_btn }}</a>
     </div>
-    <div class="rc" style="max-width:1180px;margin:44px auto 0;padding:18px 32px 30px;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-      <span style="font:400 13px 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.5);">{{ d.footer.copyright }}</span>
-      <span style="font:400 13px 'Libre Franklin','Noto Sans TC',sans-serif;color:rgba(255,255,255,.5);">{{ d.footer.host }}</span>
-    </div>
-  </footer>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-/* =====================================================================
-   CCES 網站 — 內容編輯指南（給同事）
-   ---------------------------------------------------------------------
-   1. 全部文字都在下面的  data = { ... }  物件內，按頁面分類。
-   2. 本網站只需維護「英文」內容。修改引號 "..." 中間的文字即可，
-      切勿刪除引號、冒號或逗號。
-   3. 繁體中文版本：訪客按右上角「繁」字時，由 Google 自動翻譯，
-      你毋須（也無法）手動編輯中文，只要把英文寫好即可。
-   4. 新增一則消息：在 news.items 中複製一整段 { ... }，貼上後修改文字。
-   5. 圖片：目前以斜紋方塊作佔位，提供相片與標誌後再交由設計同事替換。
-   6. 聯絡資料（電郵 / 電話）為暫定，請以實際資料更新。
-   ===================================================================== */
-class Component extends DCLogic {
-  state = { page: 'home', lang: 'en' };
-
-  data = {
-    // 機器翻譯提示橫幅（固定為繁體中文，毋須翻譯）
-    translatedNotice: "此頁面由 Google 自動翻譯為繁體中文，內容僅供參考；如有歧義，一概以英文版本為準。",
-
-    brand: {
-      name: "Centre for Climate and Environmental Sustainability",
-      tagline: "Hong Kong Baptist University",
-      parent: "A Research Institute of Hong Kong Baptist University",
-    },
-    nav: { home: "Home", about: "About", research: "Research", output: "Output", people: "People", news: "News", contact: "Contact" },
-
-    home: {
-      heroEyebrow: "Hong Kong Baptist University",
-      heroTitle: "Climate science and AI for a sustainable future",
-      heroLead: "CCES bridges climate science, atmospheric chemistry, public health, and artificial intelligence to address global challenges in climate change and environmental sustainability.",
-      ctaPrimary: "Explore our research",
-      ctaSecondary: "Meet the team",
-      objIntro: "Our objectives",
-      objHeading: "Three commitments guiding the Centre",
-      welcomeTitle: "Director's welcome",
-      welcomeBody: "Hong Kong, a densely populated coastal city, faces acute risks from sea-level rise, extreme weather, heatwaves, and air pollution. CCES is positioned to advance climate resilience and sustainability through knowledge and technology — breaking down disciplinary silos and turning research into real-world impact.",
-      director: "Prof. Meng Gao · Director",
-      newsTitle: "Latest",
-      newsHeading: "News & activities",
-      viewAll: "View all",
-      ctaBandTitle: "Collaborate with CCES",
-      ctaBandBody: "Researchers, partners, and students are welcome to connect with the Centre.",
-      ctaBandBtn: "Get in touch",
-    },
-
-    objectives: [
-      { tag: "01", title: "Research Excellence", body: "Foster multidisciplinary collaboration to understand climate impacts on ecosystems, urban resilience, and vulnerable communities — leveraging geospatial analytics, climate modeling, and sustainable technologies." },
-      { tag: "02", title: "Knowledge Transfer", body: "Translate research into actionable strategies for governments, NGOs, and industries to mitigate environmental risks and promote sustainability." },
-      { tag: "03", title: "Education", body: "Cultivate future talents through interdisciplinary research integrating climate science, atmospheric chemistry, data analytics, and policy design." },
-    ],
-
-    about: {
-      introTitle: "Mission & objectives",
-      missionLead: "CCES unites experts across climate science, computer science, social science, applied science, chemistry, and communication to foster innovation in climate prediction, data-driven policy, and inclusive, evidence-based climate interventions.",
-      govEyebrow: "Management",
-      governanceTitle: "Governance",
-      governanceBody: "A Management Committee of five senior faculty guides the Centre's strategic direction, while an International Advisory Board of distinguished global experts provides external oversight, specialist seminars, and access to international research networks.",
-    },
-
-    research: {
-      introTitle: "Research programme",
-      introBody: "Our research is organised around three interconnected themes, translating findings into tangible societal impact and contributing directly to the UN Sustainable Development Goals.",
-      themesEyebrow: "Three themes",
-      themesTitle: "What we work on",
-      themes: [
-        { no: "Theme 01", title: "Climate risk & urban resilience", body: "Quantifying climate impacts on regional and global ecosystems and on the resilience of dense coastal cities like Hong Kong." },
-        { no: "Theme 02", title: "Atmospheric chemistry & health", body: "Linking air quality and atmospheric processes to public health outcomes through observation and modelling." },
-        { no: "Theme 03", title: "AI-driven environmental governance", body: "Using AI, data analytics, and climate modelling to design inclusive, evidence-based interventions and governance frameworks." },
-      ],
-      sdgEyebrow: "Impact",
-      sdgTitle: "Sustainable Development Goals",
-      sdgs: [
-        { code: "13", name: "Climate Action" },
-        { code: "11", name: "Sustainable Cities & Communities" },
-        { code: "15", name: "Life on Land" },
-      ],
-      studentsEyebrow: "Education",
-      studentsTitle: "Student engagement",
-      studentsBody: "CCES offers externally funded MPhil and PhD scholarships, with each postgraduate co-supervised across two departments. A Summer Climate Research Internship and embedded course modules engage undergraduates, and students have opportunities to present their work at the CCES International Conference.",
-
-      // ---- PUBLICATIONS -------------------------------------------------
-      // Add a paper: copy one { ... } block, paste it on a new line, and
-      // edit the text. Leave "link" as "" if there is no online link.
-      pubEyebrow: "Outputs",
-      pubTitle: "Publications & outputs",
-      pubLead: "A complete list of papers, reports, and other research outputs by CCES members. Replace these examples with your own and add new entries as they are published — they are grouped by year automatically.",
-      publications: [
-        { year: "2026", authors: "Author A., Author B., Gao M.", title: "Replace this with the title of a representative paper from the Centre.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2026", authors: "Author C., Gao M.", title: "Second 2026 publication title goes here.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2025", authors: "Author C., Gao M., Author D.", title: "A 2025 publication title goes here.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2025", authors: "Gao M., Author E.", title: "Another 2025 publication title.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2025", authors: "Author F., Author G., Gao M.", title: "A third 2025 publication title.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2024", authors: "Gao M., Author H.", title: "A 2024 publication title goes here.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-        { year: "2024", authors: "Author I., Gao M., Author J.", title: "Another 2024 publication title.", venue: "Journal Name, Volume(Issue), pp. 1–12.", link: "" },
-      ],
-    },
-
-    people: {
-      introTitle: "Our people",
-      directorRole: "Director",
-      directorName: "Prof. Meng Gao",
-      directorAffil: "GEOG · GSIS · FASS",
-      directorBio: "Prof. Gao leads a productive interdisciplinary team and serves as PI on ongoing NSFC and RGC/GRF grants. As Director he sets the research agenda, leads budget planning, secures funding and partnerships, and represents CCES to government, industry, and community stakeholders.",
-      committeeEyebrow: "Governance",
-      committeeTitle: "Management Committee",
-      committee: [
-        { name: "Prof. Michael Ng", affil: "MATH · SCI", initials: "MN" },
-        { name: "Prof. Di Hu", affil: "CHEM · SCI", initials: "DH" },
-        { name: "Prof. Xiaopu Lyu", affil: "GEOG · GSIS · FASS", initials: "XL" },
-        { name: "Prof. Yizhou Zhuang", affil: "GEOG · GSIS · FASS", initials: "YZ" },
-        { name: "Prof. Meiyu Guo", affil: "GEOG · GSIS · FASS", initials: "MG" },
-      ],
-      teamEyebrow: "Core team",
-      teamTitle: "A growing interdisciplinary team",
-      team: [
-        { role: "Research Assistant Professor", count: "1" },
-        { role: "Postdoctoral Fellows", count: "5" },
-        { role: "PhD Students", count: "8" },
-        { role: "Research Assistants", count: "3" },
-      ],
-      advisoryEyebrow: "External",
-      advisoryTitle: "International Advisory Board",
-      advisoryBody: "Distinguished global experts in climate science, computer science, sustainability policy, environmental ethics, and public health provide strategic guidance, deliver seminars, and connect CCES members with international research networks. Members to be announced.",
-    },
-
-    news: {
-      introTitle: "News & activities",
-      introLead: "Updates on CCES research, events, and milestones. Add new entries here as activities take place.",
-      items: [
-        { date: "2026", tag: "Milestone", title: "CCES established at HKBU", body: "The Centre for Climate and Environmental Sustainability is formally established at Hong Kong Baptist University." },
-        { date: "2026", tag: "Event", title: "Inaugural all-member meeting", body: "The core team and Management Committee convene to set the first-year workplan." },
-        { date: "—", tag: "Coming soon", title: "Annual CCES International Conference", body: "Details of our inaugural international conference will be announced here." },
-      ],
-    },
-
-    contact: {
-      introTitle: "Contact us",
-      lead: "For enquiries about CCES research, collaboration, or student opportunities, please get in touch.",
-      emailLabel: "Email",
-      email: "cces@hkbu.edu.hk",
-      telLabel: "Telephone",
-      tel: "(+852) 3411-XXXX",
-      addrLabel: "Address",
-      address: "Department of Geography, Hong Kong Baptist University, Kowloon Tong, Hong Kong",
-      office: "The Centre is hosted within the Department of Geography's shared facilities.",
-    },
-
-    footer: {
-      blurb: "An interdisciplinary research institute at HKBU advancing climate resilience and environmental sustainability through science, technology, and policy engagement.",
-      exploreTitle: "Explore",
-      contactTitle: "Enquiries",
-      linksTitle: "Related links",
-      copyright: "© 2026 Centre for Climate and Environmental Sustainability, HKBU. All rights reserved.",
-      host: "Hosted by the Department of Geography, HKBU",
-    },
-  };
-
-  _order = ['home', 'about', 'research', 'output', 'people', 'news', 'contact'];
-
-  componentDidMount() {
-    try {
-      const h = (location.hash || '').replace('#', '').trim();
-      const sl = localStorage.getItem('cces_lang');
-      const st = {};
-      if (this._order.includes(h)) st.page = h;
-      if (sl === 'en' || sl === 'zh') st.lang = sl;
-      if (Object.keys(st).length) this.setState(st);
-      if (st.lang === 'zh') this.applyTranslate('zh');
-    } catch (e) {}
-    this._onHash = () => {
-      const h = (location.hash || '').replace('#', '').trim();
-      if (this._order.includes(h) && h !== this.state.page) {
-        this.setState({ page: h });
-        window.scrollTo(0, 0);
-      }
-    };
-    window.addEventListener('hashchange', this._onHash);
-  }
-  componentWillUnmount() { if (this._onHash) window.removeEventListener('hashchange', this._onHash); }
-
-  go(page) {
-    this.setState({ page });
-    try { history.replaceState(null, '', '#' + page); } catch (e) {}
-    window.scrollTo(0, 0);
-  }
-
-  // Switch the Google Translate widget between original English and Traditional Chinese.
-  applyTranslate(lang, attempt) {
-    attempt = attempt || 0;
-    const combo = document.querySelector('.goog-te-combo');
-    if (combo) {
-      combo.value = (lang === 'zh') ? 'zh-TW' : '';
-      combo.dispatchEvent(new Event('change'));
-      if (lang !== 'zh') {
-        // clear translation cookie so the page returns to English
-        document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
-      }
-    } else if (attempt < 75) {
-      setTimeout(() => this.applyTranslate(lang, attempt + 1), 200);
-    }
-  }
-
-  setLang(lang) {
-    this.setState({ lang });
-    try { localStorage.setItem('cces_lang', lang); } catch (e) {}
-    this.applyTranslate(lang);
-  }
-
-  // Group the flat publications list by year (newest first), numbering within each year.
-  groupPublications(list) {
-    const years = [];
-    const byYear = {};
-    list.forEach((p) => {
-      const y = String(p.year);
-      if (!byYear[y]) { byYear[y] = []; years.push(y); }
-      byYear[y].push(p);
-    });
-    years.sort((a, b) => b.localeCompare(a));
-    return years.map((y) => ({
-      year: y,
-      countLabel: byYear[y].length + (byYear[y].length === 1 ? ' item' : ' items'),
-      items: byYear[y].map((p, i) => ({ ...p, num: String(i + 1).padStart(2, '0'), hasLink: !!(p.link && p.link.trim()) })),
-    }));
-  }
-
-  renderVals() {
-    const d = this.data;
-    const page = this.state.page;
-    const lang = this.state.lang;
-
-    const navBase = { display: 'inline-block', padding: '20px 1px', color: 'rgba(255,255,255,0.82)', fontSize: '15px', fontWeight: 600, letterSpacing: '0.01em', textDecoration: 'none', cursor: 'pointer', borderBottom: '3px solid transparent', fontFamily: "'Libre Franklin','Noto Sans TC',sans-serif" };
-    const navOn = { color: '#fff', borderBottom: '3px solid #c79a3e' };
-    const navOrder = this._order.filter((k) => k !== 'contact'); // Contact reachable via the "Get in touch" button, not the nav
-    const navItems = navOrder.map((key) => ({
-      key, label: d.nav[key], onClick: () => this.go(key),
-      style: page === key ? { ...navBase, ...navOn } : navBase,
-    }));
-
-    const langBase = { background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.55)', fontSize: '13px', fontWeight: 600, cursor: 'pointer', padding: '0 7px', fontFamily: "'Libre Franklin','Noto Sans TC',sans-serif" };
-    const langOn = { color: '#fff' };
-    const langs = [
-      { key: 'en', label: 'EN', onClick: () => this.setLang('en'), style: lang === 'en' ? { ...langBase, ...langOn } : langBase },
-      { key: 'zh', label: '繁', onClick: () => this.setLang('zh'), style: lang === 'zh' ? { ...langBase, ...langOn } : langBase },
-    ];
-
-    const footerNav = navOrder.map((key) => ({ label: d.nav[key], onClick: () => this.go(key) }));
-
-    return {
-      d, isZh: lang === 'zh',
-      navItems, langs, footerNav,
-      newsPreview: d.news.items.slice(0, 3),
-      pubGroups: this.groupPublications(d.research.publications),
-      goHome: () => this.go('home'),
-      goResearch: () => this.go('research'),
-      goPeople: () => this.go('people'),
-      goNews: () => this.go('news'),
-      goContact: () => this.go('contact'),
-      isHome: page === 'home', isAbout: page === 'about', isResearch: page === 'research',
-      isOutput: page === 'output', isPeople: page === 'people', isNews: page === 'news', isContact: page === 'contact',
-    };
-  }
-}
-</script>
-</body>
-</html>
+  </section>
+</main>

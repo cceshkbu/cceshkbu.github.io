@@ -1,0 +1,18 @@
+# ============================================================
+# 新聞頁面設定
+# ============================================================
+# 新聞條目現在以獨立檔案管理，放在 _news/ 目錄下。
+#
+# 新增一則新聞：
+#   1. 在 _news/ 下新建一個檔案，命名格式：YYYY-MM-DD-標題-slug.md
+#   2. 檔案內容格式：
+#      ---
+#      title: "新聞標題"
+#      date: 2026-06-26
+#      tag: "Event"
+#      ---
+#      這裏寫新聞正文內容（支援 Markdown 格式）。
+#   3. 保存後重新 build 即可自動生成新聞列表和詳情頁。
+
+intro_title: "News & activities"
+intro_lead: "Updates on CCES research, events, and milestones. Add new entries here as activities take place."

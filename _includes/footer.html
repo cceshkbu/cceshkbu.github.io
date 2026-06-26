@@ -1,0 +1,42 @@
+{% assign s = site.data.site %}
+{% assign f = site.data.footer %}
+{% assign c = site.data.contact %}
+<footer class="site-footer">
+  <div class="container footer__top">
+    <div>
+      <div class="footer__brand">
+        <span class="footer__brand-mark" translate="no">CCES</span>
+        <span class="footer__brand-name">{{ s.brand.name }}</span>
+      </div>
+      <p class="footer__blurb">{{ f.blurb }}</p>
+    </div>
+    <div>
+      <div class="footer__heading">{{ f.explore_title }}</div>
+      <div class="footer__links">
+        <a href="{{ '/' | relative_url }}" class="footer__link">{{ s.nav.home }}</a>
+        <a href="{{ '/about.html' | relative_url }}" class="footer__link">{{ s.nav.about }}</a>
+        <a href="{{ '/research.html' | relative_url }}" class="footer__link">{{ s.nav.research }}</a>
+        <a href="{{ '/people.html' | relative_url }}" class="footer__link">{{ s.nav.people }}</a>
+        <a href="{{ '/news.html' | relative_url }}" class="footer__link">{{ s.nav.news }}</a>
+        <a href="{{ '/contact.html' | relative_url }}" class="footer__link">{{ s.nav.contact }}</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">{{ f.contact_title }}</div>
+      <div class="footer__contact-items">
+        <a href="mailto:{{ c.email }}" class="footer__link" translate="no">{{ c.email }}</a>
+        <span>{{ c.address }}</span>
+      </div>
+      <div class="footer__heading" style="margin-top:24px;">{{ f.links_title }}</div>
+      <div class="footer__links">
+        {% for link in f.external_links %}
+        <a href="{{ link.url }}" target="_blank" class="footer__link">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span class="footer__copy">{{ f.copyright }}</span>
+    <span class="footer__copy">{{ f.host }}</span>
+  </div>
+</footer>

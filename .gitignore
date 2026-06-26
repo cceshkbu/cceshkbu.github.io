@@ -28,3 +28,10 @@ npm-debug.log*
 # Environment
 .env
 .env.local
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock

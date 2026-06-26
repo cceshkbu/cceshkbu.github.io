@@ -1,0 +1,44 @@
+# ============================================================
+# 首頁 (Home) 內容
+# ============================================================
+# 修改提示：改動引號中的文字即可。
+# 圖片放在 assets/images/ 對應目錄下，修改下方 image 路徑即可更換。
+
+hero_eyebrow: "Hong Kong Baptist University"
+hero_title: "Climate science and AI for a sustainable future"
+hero_lead: "CCES bridges climate science, atmospheric chemistry, public health, and artificial intelligence to address global challenges in climate change and environmental sustainability."
+cta_primary: "Explore our research"
+cta_secondary: "Meet the team"
+
+# Hero 圖片（放在 assets/images/home/ 下）
+hero_image: "home/hero.jpg"
+
+# --- 研究目標卡片 ---
+obj_intro: "Our objectives"
+obj_heading: "Three commitments guiding the Centre"
+objectives:
+  - tag: "01"
+    title: "Research Excellence"
+    body: "Foster multidisciplinary collaboration to understand climate impacts on ecosystems, urban resilience, and vulnerable communities — leveraging geospatial analytics, climate modeling, and sustainable technologies."
+  - tag: "02"
+    title: "Knowledge Transfer"
+    body: "Translate research into actionable strategies for governments, NGOs, and industries to mitigate environmental risks and promote sustainability."
+  - tag: "03"
+    title: "Education"
+    body: "Cultivate future talents through interdisciplinary research integrating climate science, atmospheric chemistry, data analytics, and policy design."
+
+# --- 致辭 ---
+# 主任照片與 people.yml 共用，路徑為 people/director-gao-meng.jpg
+welcome_title: "Director's welcome"
+welcome_body: "Hong Kong, a densely populated coastal city, faces acute risks from sea-level rise, extreme weather, heatwaves, and air pollution. CCES is positioned to advance climate resilience and sustainability through knowledge and technology — breaking down disciplinary silos and turning research into real-world impact."
+director: "Prof. Meng Gao · Director"
+
+# --- 最新消息預覽 ---
+news_title: "Latest"
+news_heading: "News & activities"
+view_all: "View all"
+
+# --- 底部 CTA ---
+cta_band_title: "Collaborate with CCES"
+cta_band_body: "Researchers, partners, and students are welcome to connect with the Centre."
+cta_band_btn: "Get in touch"

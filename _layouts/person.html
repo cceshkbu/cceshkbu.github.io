@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <div id="google_translate_element" style="position:absolute;width:0;height:0;overflow:hidden;left:-9999px;"></div>
+
+  {% include header.html %}
+
+  <main>
+    <!-- Page hero -->
+    <section class="section-dark">
+      <div class="container page-hero">
+        <div class="eyebrow eyebrow--light">{{ site.data.site.nav.people }}</div>
+        <h1 class="page-hero__title">{{ page.name }}</h1>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section style="padding:64px 0 72px;">
+      <div class="container" style="display:grid;grid-template-columns:.35fr 1fr;gap:48px;align-items:start;">
+        <div>
+          {% if page.image %}
+          <div style="border-radius:4px;overflow:hidden;aspect-ratio:1/1;">
+            <img src="{{ '/assets/images/' | append: page.image | relative_url }}" alt="{{ page.name }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          {% else %}
+          <div style="aspect-ratio:1/1;border-radius:4px;background:repeating-linear-gradient(45deg,#eef2f8,#eef2f8 11px,#e6ecf5 11px,#e6ecf5 22px);display:flex;align-items:center;justify-content:center;">
+            <span style="font:700 44px 'Source Serif 4',Georgia,serif;color:#b9c4d6;">{{ page.name | split: " " | last | slice: 0, 1 }}{{ page.name | split: " " | first | slice: 0, 1 }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div>
+          <div class="eyebrow">{{ page.role }}</div>
+          <h2 class="section-title" style="margin:8px 0 0;">{{ page.name }}</h2>
+          <div style="font:500 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:#8a97ad;margin-top:6px;letter-spacing:.03em;">{{ page.affil }}</div>
+          {% if content and content != "" and content != blank %}
+          <div style="font:400 17px/1.7 'Libre Franklin','Noto Sans TC',sans-serif;color:#54627a;margin:24px 0 0;">
+            {{ content }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="container" style="margin-top:48px;padding-top:24px;border-top:1px solid #e4eaf3;">
+        <a href="{{ '/people.html' | relative_url }}" style="font:600 14px 'Libre Franklin','Noto Sans TC',sans-serif;color:#0b3a78;text-decoration:none;">← Back to all people</a>
+      </div>
+    </section>
+  </main>
+
+  {% include footer.html %}
+
+  <script src="{{ '/assets/js/translate.js' | relative_url }}"></script>
+</body>
+</html>

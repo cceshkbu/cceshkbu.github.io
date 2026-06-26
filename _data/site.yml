@@ -1,0 +1,21 @@
+# ============================================================
+# 全站設定（品牌名稱、導航選單）
+# ============================================================
+# 修改提示：只需改動引號 "..." 裏的文字，不要刪除冒號或逗號。
+
+brand:
+  name: "Centre for Climate and Environmental Sustainability"
+  tagline: "Hong Kong Baptist University"
+  parent: "A Research Institute of Hong Kong Baptist University"
+
+# 導航選單（順序即顯示順序）
+nav:
+  home: "Home"
+  about: "About"
+  research: "Research"
+  people: "People"
+  news: "News"
+  contact: "Contact"
+
+# Google 翻譯橫幅提示（繁體中文，固定文字）
+translated_notice: "此頁面由 Google 自動翻譯為繁體中文，內容僅供參考；如有歧義，一概以英文版本為準。"

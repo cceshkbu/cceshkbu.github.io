@@ -1,0 +1,22 @@
+# ============================================================
+# 出版物頁面設定
+# ============================================================
+# 論文條目現在以獨立檔案管理，放在 _publications/ 目錄下。
+#
+# 新增一篇論文：
+#   1. 在 _publications/ 下新建檔案，命名格式：YYYY-NN-簡短標題.md
+#      （NN 為該年份內的序號，用於控制顯示順序）
+#   2. 檔案內容格式：
+#      ---
+#      year: "2026"
+#      authors: "Author A., Author B., Gao M."
+#      title: "Title of the paper."
+#      venue: "Journal Name, Volume(Issue), pp. 1–12."
+#      link: "https://doi.org/..."
+#      ---
+#   3. 沒有連結時，link 留空 "" 即可。
+#   4. 論文會自動按年份分組，年份內按檔案名排序。
+
+pub_eyebrow: "Research outputs"
+pub_title: "Selected publications"
+pub_lead: "Selected papers, reports, and other research outputs by CCES members. Add new entries as they are published — they are grouped by year automatically."
