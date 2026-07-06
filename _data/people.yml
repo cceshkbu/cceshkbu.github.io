@@ -9,7 +9,7 @@ intro_title: "Our people"
 director_role: "Director"
 director_name: "Prof. Meng Gao"
 director_affil: "GEOG · GSIS · FASS"
-director_image: "people/director-gao-meng.jpg"
+director_image: "people/director-meng-gao.jpg"
 director_bio: "Prof. Gao leads a productive interdisciplinary team and serves as PI on ongoing NSFC and RGC/GRF grants. As Director he sets the research agenda, leads budget planning, secures funding and partnerships, and represents CCES to government, industry, and community stakeholders."
 
 # --- 管理委員會 ---
@@ -20,40 +20,45 @@ committee_title: "Management Committee"
 # 命名格式：committee-姓名拼音.jpg（全小寫，用連字符）
 # 有照片的加上 image 欄位，沒有照片的不加（會顯示姓名縮寫）
 committee:
-  - name: "Prof. Michael Ng"
-    affil: "MATH · SCI"
-    initials: "MN"
-    slug: "michael-ng"
+  - name: "Prof. Meiyu Guo"
+    affil: "GEOG · GSIS · FASS"
+    initials: "MG"
+    image: "people/committee-meiyu-guo.jpg"
+    slug: "meiyu-guo"
   - name: "Prof. Di Hu"
     affil: "CHEM · SCI"
     initials: "DH"
+    image: "people/committee-di-hu.jpg"
     slug: "di-hu"
   - name: "Prof. Xiaopu Lyu"
     affil: "GEOG · GSIS · FASS"
     initials: "XL"
+    image: "people/committee-xiaopu-lyu.jpg"
     slug: "xiaopu-lyu"
+  - name: "Prof. Michael Kwok-Po NG"
+    affil: "MATH · SCI"
+    initials: "MN"
+    image: "people/committee-michael-ng.jpg"
+    slug: "michael-ng"
   - name: "Prof. Yizhou Zhuang"
     affil: "GEOG · GSIS · FASS"
     initials: "YZ"
+    image: "people/committee-yizhou-zhuang.jpg"
     slug: "yizhou-zhuang"
-  - name: "Prof. Meiyu Guo"
-    affil: "GEOG · GSIS · FASS"
-    initials: "MG"
-    image: "people/committee-guo-meiyu.jpg"
-    slug: "meiyu-guo"
+
 
 # --- 核心團隊與研究人員 ---
 # slug 對應 _people/ 目錄下的檔名（不含 .md）
 # 照片放在 assets/images/people/ 目錄下
 # 命名格式：fellow-姓名拼音.jpg（全小寫，用連字符）
-team_eyebrow: "Core team"
-team_title: "A growing interdisciplinary team"
-fellows:
-  - name: "Dr. Example Fellow"
-    role: "Postdoctoral Fellow"
-    initials: "EF"
-    slug: "example-fellow"
-    # image: "people/fellow-example.jpg"
+# team_eyebrow: "Core team"
+# team_title: "A growing interdisciplinary team"
+# fellows:
+#   - name: "Dr. Example Fellow"
+#     role: "Postdoctoral Fellow"
+#     initials: "EF"
+#     slug: "example-fellow"
+#     # image: "people/fellow-example.jpg"
 
 # --- 國際顧問委員會 ---
 advisory_eyebrow: "External"
