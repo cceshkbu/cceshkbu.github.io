@@ -36,3 +36,4 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 cceshkbu.github.io/
+.Rapp.history
