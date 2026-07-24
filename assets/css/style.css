@@ -49,7 +49,7 @@ font { background: transparent !important; box-shadow: none !important; vertical
 
 /* --- Main bar --- */
 .main-bar {
-  background: #0b3a78;
+  background: #1a5aa6;
 }
 .main-bar__inner {
   display: flex;
@@ -181,7 +181,7 @@ font { background: transparent !important; box-shadow: none !important; vertical
 
 /* --- Hero section --- */
 .hero {
-  background: linear-gradient(135deg, #0b3a78 0%, #082a5e 100%);
+  background: linear-gradient(135deg, #1a5aa6 0%, #123f7a 100%);
   color: #fff;
 }
 .hero__inner {
@@ -335,7 +335,7 @@ font { background: transparent !important; box-shadow: none !important; vertical
 
 /* --- Dark section (navy background) --- */
 .section-dark {
-  background: #0b3a78;
+  background: #1a5aa6;
   color: #fff;
 }
 .section-darker {
@@ -654,7 +654,7 @@ font { background: transparent !important; box-shadow: none !important; vertical
 
 /* --- Footer --- */
 .site-footer {
-  background: #082654;
+  background: #123f7a;
   color: rgba(255, 255, 255, .78);
 }
 .footer__top {
@@ -734,7 +734,7 @@ font { background: transparent !important; box-shadow: none !important; vertical
 
 /* --- Page hero banner (inner pages) --- */
 .page-hero {
-  background: #0b3a78;
+  background: #1a5aa6;
   color: #fff;
   padding: 54px 32px;
 }

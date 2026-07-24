@@ -6,12 +6,12 @@
 
 hero_eyebrow: "Hong Kong Baptist University"
 hero_title: "Climate science and AI for a sustainable future"
-hero_lead: "CCES bridges climate science, atmospheric chemistry, public health, and artificial intelligence to address global challenges in climate change and environmental sustainability."
+hero_lead: "Centre for Climate and Environmental Sustainability (CCES) bridges climate science, atmospheric chemistry, public health, and artificial intelligence to address global challenges in climate change and environmental sustainability."
 cta_primary: "Explore our research"
 cta_secondary: "Meet the team"
 
 # Hero 圖片（放在 assets/images/home/ 下）
-hero_image: "home/hero.jpg"
+hero_image: "home/hero.png"
 
 # --- 研究目標卡片 ---
 obj_intro: "Our objectives"
