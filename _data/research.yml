@@ -23,10 +23,10 @@ themes:
 sdg_eyebrow: "Impact"
 sdg_title: "Sustainable Development Goals"
 sdgs:
-  - code: "13"
-    name: "Climate Action"
   - code: "11"
     name: "Sustainable Cities & Communities"
+  - code: "13"
+    name: "Climate Action"
   - code: "15"
     name: "Life on Land"
 
